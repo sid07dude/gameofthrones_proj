@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="card card-primary" *ngIf="currentCharacter">
+        <div class="card-header">
+            <div *ngIf="currentCharacter.name==''; then thenblock; else elseblock">
+            </div>
+            <ng-template #thenblock>
+                <h3 class="card-title" style="text-align: center">Aliases-{{currentCharacter.aliases}}</h3>
+            </ng-template>
+            <ng-template #elseblock>
+                <h3 class="card-title" style="text-align: center">Name-{{currentCharacter.name}}</h3>
+            </ng-template>
+
+        </div>
+        <div class="card body">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-6" *ngIf="currentCharacter.gender==='Male'">
+                            <img class=imageCharacter src="../assets/images/male5.png" />
+                        </div>
+                        <div class="col-md-6" *ngIf="currentCharacter.gender==='Female'">
+                            <img class=imageCharacter  style="width:300px;height:500px" src="../assets/images/female1.png" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-responsive table-bordered">
+                            <tbody>
+                                <tr *ngIf='currentCharacter.culture !== "" && currentCharacter.culture !== null && currentCharacter.culture !== undefined'>
+                                    <td>
+                                        Culture
+                                    </td>
+                                    <td>
+                                        {{currentCharacter.culture}}
+                                    </td>
+                                </tr>
+                                <tr *ngIf='currentCharacter.playedBy.length >0 && currentCharacter.playedBy[0] !== "" '>
+                                    <td>
+                                        Played By
+                                    </td>
+                                    <td>
+                                        {{currentCharacter.playedBy}}
+                                    </td>
+                                </tr>
+                                <tr *ngIf='currentCharacter.books.length >0 && currentCharacter.books[0] !== "" '>
+                                    <td>
+                                        Books
+                                    </td>
+                                    <td>{{currentCharacter.books}}
+                                    </td>
+                                </tr>
+                                <tr *ngIf='currentCharacter.allegiances.length >0 && currentCharacter.allegiances[0] !== "" '>
+                                    <td>
+                                        Allegiances
+                                    </td>
+                                    <td>
+                                        {{currentCharacter.allegiances}}
+                                    </td>
+                                </tr>
+                                <tr *ngIf='currentCharacter.tvSeries.length >0 && currentCharacter.tvSeries[0] !== "" '>
+                                    <td>
+                                        Tv Series
+                                    </td>
+                                    <td>
+                                        {{currentCharacter.tvSeries}}
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                        <br/>
+                        <div class="row" style="text-align: center">
+                            <div class="col-md-6">
+                                <a [routerLink]="['/home']">
+                                    <button class="btn btn-success btn-small">Go Back</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

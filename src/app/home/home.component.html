@@ -1,0 +1,201 @@
+<div class="container">
+    <div>
+        <img class="img-responsive image" src="../assets/images/got2.png" />
+    </div>
+    <img class="img-responsive" alt="got logo" src="../assets/images/logo.png" />
+
+    <div class="bg-white">
+        <form action="">
+            <div class="input-group">
+                <input type="text" class="filter-input text-black form-control" name="term" [(ngModel)]="myfilter" placeholder="Search for books....,characters...and  house name">
+
+            </div>
+        </form>
+    </div>
+    <br/>
+    <div class="card-header books">
+        <h3>Books</h3>
+    </div>
+    <div class="row">
+        <div class="card card-primary col-md-6 col-sm-12" *ngFor="let books of allBooks |filter:myfilter">
+            <div class="card-header" *ngIf="books.name==''">
+                <h5 class="card-title">No Name</h5>
+            </div>
+            <div class="card-header" *ngIf="books.name!=''">
+                <h5 class="card-title">{{books.name}}</h5>
+            </div>
+            <div class="card body">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <img class=imageBooks src="../assets/images/book4.jpg" />
+                    </div>
+                    <div class="col-md-6 col-sm-12 text">
+                        <div class="row text">
+                            <div>
+                                Authors :
+                            </div>
+                            <div>
+                                {{ books.authors}}
+                            </div>
+                        </div>
+                        <div class="row text">
+                            <div>
+                                Number of Pages :
+                            </div>
+                            <div>
+                                {{ books.numberOfPages}}
+                            </div>
+                        </div>
+                        <div class="row text">
+                            <div>
+                                Publisher :
+                            </div>
+                            <div>
+                                {{ books.publisher}}
+                            </div>
+                        </div>
+                        <div class="row text">
+                            <div>
+                                Country :
+                            </div>
+                            <div>
+                                {{ books.country}}
+                            </div>
+                        </div>
+                        <div class="row text">
+                            <div>
+                                Released on :
+                            </div>
+                            <div>
+                                {{ books.released|date}}
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="text-align: center">
+                            <div class="col-md-6 col-sm-12">
+                                <a [routerLink]="['/books',books.bookId]">
+                                    <button class="btn btn-small books">Read More</button>
+                                </a>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+
+    <!--Characters starts from here-->
+    <div class="card-header character">
+        <h3>Characters</h3>
+    </div>
+    <div class="row">
+        <div class="card card-primary col-md-6 col-sm-12" *ngFor="let characters of allCharacters |filter:myfilter">
+            <div class="card-header">
+                <div *ngIf="characters.name==''; then noNameBlock; else nameBlock">
+                </div>
+                <ng-template class="card-header" #noNameBlock>
+                    <h5 class="card-title">No Name</h5>
+                </ng-template>
+                <ng-template class="card-header" #nameBlock>
+                    <h5 class="card-title">{{characters.name}}</h5>
+                </ng-template>
+            </div>
+            <div class="card body">
+                <div class="row">
+                    <div class="col-md-5" *ngIf="characters.gender==='Male'">
+                        <img class=imageCharacter src="../assets/images/male5.png" />
+                    </div>
+                    <div class="col-md-5" *ngIf="characters.gender==='Female'">
+                        <img class=imageCharacter src="../assets/images/female1.png" />
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        <div class="row text">
+                            <div>
+                                Gender :
+                            </div>
+                            <div>{{characters.gender}}
+
+                            </div>
+                        </div>
+                        <div class="row text">
+                            <div>
+                                Culture :
+                            </div>
+                            <div *ngIf="characters.culture==''; then thenBlock; else elseBlock">
+                            </div>
+                            <ng-template #thenBlock>
+                                <div>N/A</div>
+                            </ng-template>
+                            <ng-template #elseBlock>
+                                <div>{{characters.culture}}</div>
+                            </ng-template>
+                        </div>
+                        <div class="row text">
+                            <div>Aliases : </div>
+                            <div>
+                                <b> {{characters.aliases}}</b>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="text-align:center">
+                            <div class="col-md-6 col-sm-12">
+                                <a [routerLink]="['/characters',characters.characterId]">
+                                    <button class="btn btn-small character">Read More</button>
+                                </a>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of character-->
+
+    <br/>
+    <br/>
+    <!--Start of House-->
+    <div class="card-header house">
+        <h3>House</h3>
+    </div>
+    <div class="row">
+        <div class="card card-primary col-md-6 col-sm-12" *ngFor="let house of allHouses |filter:myfilter">
+            <div class="card-header">
+                <h5 class="card-title">{{house.name}}</h5>
+            </div>
+            <div class="card body">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <img class=imageHouse src="../assets/images/house2.jpg" />
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="row text">
+                            Region
+                            <div>
+                                : {{house.region}}
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="text-align: center">
+                            <div class="col-md-6 col-sm-12">
+                                <a [routerLink]="['/house',house.houseId]">
+                                    <button class="btn btn-small house">Read More</button>
+                                </a>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--End of House-->
+</div>
+<!--End of Container-->

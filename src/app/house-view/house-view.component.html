@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="card card-primary" *ngIf="currentHouse">
+        <div class="card-header">
+            <h3 class="card-title" style="text-align: center">{{currentHouse.name}}</h3>
+        </div>    
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class=imageHouse src="../assets/images/house2.jpg" />
+                        <br>
+                        <br>
+                        <div class="row" style="padding-left: 20px">
+                            <a [routerLink]="['/home']">
+                                <button class="btn btn-success btn-small">Go Back</button>
+                            </a>
+                        </div>
+                        <br/>
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table table-responsive table-bordered">
+                            <tr *ngIf='currentHouse.region !== "" && currentHouse.region !== null && currentHouse.region !== undefined'>
+                                <td>
+                                    <b>Region :</b>
+                                </td>
+                                <td>{{currentHouse.region}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.coatOfArms !== "" && currentHouse.coatOfArms !== null && currentHouse.coatOfArms !== undefined'>
+                                <td>
+                                    <b>Coat of Arms :</b>
+                                </td>
+                                <td>{{currentHouse.coatOfArms}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.words !== "" && currentHouse.words !== null && currentHouse.words !== undefined'>
+                                <td>
+                                    <b>Words :</b>
+                                </td>
+                                <td>{{currentHouse.words}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.titles.length >0 && currentHouse.titles[0] !== "" '>
+                                <td>
+                                    <b>Titles :</b>
+                                </td>
+                                <td *ngFor="let titles of currentHouse.titles;let first=first;let last=last">{{titles}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.seats !== "" && currentHouse.seats !== null && currentHouse.seats !== undefined'>
+                                <td>
+                                    <b>Seats :</b>
+                                </td>
+                                <td>{{currentHouse.seats}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.currentLord !== "" && currentHouse.currentLord !== null && currentHouse.currentLord !== undefined'>
+                                <td>
+                                    <b>Current lord :</b>
+                                </td>
+                                <td>{{currentHouse.currentLord}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.overload !== "" && currentHouse.overload !== null && currentHouse.overload !== undefined'>
+                                <td>
+                                    <b>Overload :</b>
+                                </td>
+                                <td>{{currentHouse.overload}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.heir !== "" && currentHouse.heir !== null && currentHouse.heir !== undefined'>
+                                <td>
+                                    <b>Heir :</b>
+                                </td>
+                                <td>{{currentHouse.heir}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.founded !== "" && currentHouse.founded !== null && currentHouse.founded !== undefined'>
+                                <td>
+                                    <b>Founded :</b>
+                                </td>
+                                <td>{{currentHouse.founded}}</td>
+                            </tr>
+                            <tr *ngIf='currentHouse.founder !== "" && currentHouse.founder !== null && currentHouse.founder !== undefined'>
+                                <td>
+                                    <b>Founder :</b>
+                                </td>
+                                <td class="wordWrap">{{currentHouse.founder}}</td>
+                            </tr>
+                            <!--<tr *ngIf='currentHouse.swornMembers.length >0 && currentHouse.swornMembers[0] !== "" '>
+                                <td>
+                                    <b>Sworn Members :</b>
+                                </td>
+                                <th rowspan="2" *ngFor="let swornMembers of currentHouse.swornMembers;let first=first;let last=last">
+                                    <p style="word-wrap: break-word">{{swornMembers}}{{last ? '' : ','}}</p>
+                                </th>
+                            </tr>-->
+                        
+                        </table>
+                        <br/>
+
+                    </div>
+                </div>
+            </div>        
+    </div>
+</div>

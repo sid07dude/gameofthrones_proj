@@ -1,0 +1,123 @@
+<div class="container">
+
+  <div class="card card-primary" *ngIf="currentBook">
+    <div class="card-header">
+      <h3 class="card-title" style="text-align: center">{{currentBook.name}}</h3>
+      <h6 class="card-title" style="text-align: center">(ISBN: {{currentBook.isbn}})</h6>
+    </div>
+    <div class="card body">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4">
+            <img class=imageBooks src="../assets/images/book3.jpg" />
+            <br>
+            <br>
+            <div class="row" style="text-align: center">
+              <div class="col-md-6">
+                <a [routerLink]="['/home']">
+                  <button class="btn btn-success btn-small">Go Back</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <br/>
+          <br/>
+          <div class="col-md-8">
+            <div class="row">
+              <table class="table table-responsive table-condensed table-bordered col-md-6">
+                <tbody>
+                  <tr>
+                    <td>
+                      <b>Name :</b>
+                    </td>
+                    <td>{{currentBook.name}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Media Type :</b>
+                    </td>
+                    <td>{{currentBook.mediaType}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Country :</b>
+                    </td>
+                    <td>{{currentBook.country}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>No.of Pages :</b>
+                    </td>
+                    <td>{{currentBook.numberOfPages}}</td>
+                  </tr>
+                  <!---->
+                  <tr>
+                    <td>
+                      <b>Author :</b>
+                    </td>
+                    <td>{{currentBook.authors}}</td>
+                  </tr>
+                  <!---->
+                  <!---->
+                  <tr>
+                    <td>
+                      <b>No.of Characters :</b>
+                    </td>
+                    <td>{{currentBook.characters.length}}</td>
+                  </tr>
+                  <!---->
+                  <tr>
+                    <td>
+                      <b>No.of Pov Characters :</b>
+                    </td>
+                    <td>{{currentBook.povCharacters.length}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Publisher :</b>
+                    </td>
+                    <td>{{currentBook.publisher}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Released Date :</b>
+                    </td>
+                    <td>{{currentBook.released |date}}</td>
+                  </tr>
+                  <tr>
+                    <!-- <td>
+                      <b> Characters :</b>
+                    </td>
+                    <td>{{currentBook.characters}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Pov Characters :</b>
+                    </td>
+                    <td>{{currentBook.povCharacters}}</td>
+                  </tr>-->
+                </tbody>
+              </table>
+              <br/>
+              <div class="col-md-6">
+                <div class="row">
+                  Characters 
+                </div>
+                <div *ngFor="let characters of currentBook.characters">
+                    <p class="border border-white text-truncate">{{characters}}</p>
+                </div>
+                <div class="row">
+                    POV Characters
+                  </div>
+                  <div *ngFor="let povCharacters of currentBook.povCharacters">
+                      <p class="border border-white text-truncate">{{currentBook.povCharacters}}</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
